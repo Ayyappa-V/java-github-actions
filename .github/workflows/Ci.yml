@@ -15,6 +15,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    - name: create file with date
+      uses: output_file="$(date +'%Y-%m-%d')-output.txt"
+            your_command > "$output_file"
+            echo "File generated: $output_file"
+
 
     - name: Set up Java
       uses: actions/setup-java@v3
