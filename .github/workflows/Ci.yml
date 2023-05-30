@@ -22,9 +22,10 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Build with Maven
-      run: mvn package
-
+    - name: validate with Maven
+      run: mvn validate
+    - name: compile with Maven
+      run: mvn compile
     - name: Run tests
       run: mvn test
 
