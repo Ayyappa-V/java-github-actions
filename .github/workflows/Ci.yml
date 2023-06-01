@@ -1,4 +1,7 @@
-name: Java CI
+
+      
+      
+      name: Java CI
 
 on:
   push:
@@ -11,15 +14,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    - run: |
-          date > output.txt
-
-      - name: Download File
-        uses: actions/download-artifact@v2
-        with:
-          name: output.txt
-
-      - run: cat output.txt
 
     steps:
     - name: Checkout repository
@@ -33,8 +27,20 @@ jobs:
 
     - name: validate with Maven
       run: mvn validate
+
     - name: compile with Maven
       run: mvn compile
+
     - name: Run tests
-      run: mvn test
+      run: |
+        mvn test
+        date > output.txt
+
+    - name: Download File
+      uses: actions/download-artifact@v2
+      with:
+        name: output.txt
+
+    - run: cat output.txt
+
 
