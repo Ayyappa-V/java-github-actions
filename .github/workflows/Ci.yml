@@ -1,4 +1,4 @@
-name: Ci
+name: Java CI
 
 on:
   push:
