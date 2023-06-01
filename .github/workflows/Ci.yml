@@ -28,23 +28,15 @@ jobs:
       
     - name: code test
       run: mvn test
-      
-    - name: code quality
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-    - run: |
-        java -version
-        mvn -version
         
     - name: Cache SonarQube packages 
       uses: actions/cache@vi
       with:
         path: ~/.sonar/cache 
-        key: ${< runner.os }}-sonar restore-keys: ${f runner.os }}-sonar
+        key: ${< runner.os }}-sonar 
+        restore-keys: ${f runner.os }}-sonar
     
-    - name: Cache Maven packages 
+    - name: Build and Analyze 
       uses: actions/cache@v1 
       with:
         path: ~/.m2
@@ -52,23 +44,13 @@ jobs:
         restore-keys: ${f runner.os })-m2
     
     - name: Build and analyze 
-    env:
-      #GITHUB_ TOKEN: ${ secrets. GITHUB_ TOKEN }} # Needed to get PR information, if any
-      SONAR_ TOKEN: S{{ secrets.SONAR_TOKEN })
-      SONAR_HOST_URL: Sf secrets. SONAR_HOST_URL })
-      run: mvn -B verify org.sonarsource.scanner. maven: sonar-maven-plugin:sonar -Dsonar.projectKeysgithub-action-pipeline-codequality
+      env:
+        #GITHUB_ TOKEN: ${ secrets. GITHUB_ TOKEN }} # Needed to get PR information, if any
+        SONAR_ TOKEN: S{{ secrets.SONAR_TOKEN })
+        SONAR_HOST_URL: Sf secrets. SONAR_HOST_URL })
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKeysgithub-action-pipeline-codequality
 
   
-    
-    - name: Cache
-      uses: actions/cache@v1.2.1
-        with:
-    # A directory to store and save the cache
-      path: http://54.152.141.83:8080
-    # An explicit key for restoring and saving the cache
-      key: sathya-java
-    # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
-      restore-keys: # optional
 
     
 
