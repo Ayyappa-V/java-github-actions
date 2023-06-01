@@ -23,8 +23,34 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: validate with Maven
+    - name: code build
       run: mvn clean install
+      
+    - name: code test
+      run: mvn test
+      
+    - name: code quality
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+    - run: |
+        java -version
+        mvn -version
+        
+
+
+  
+    
+    - name: Cache
+      uses: actions/cache@v1.2.1
+        with:
+    # A directory to store and save the cache
+      path: http://54.152.141.83:8080
+    # An explicit key for restoring and saving the cache
+      key: sathya-java
+    # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
+      restore-keys: # optional
 
     
 
