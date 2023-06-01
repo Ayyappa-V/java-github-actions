@@ -26,7 +26,7 @@ jobs:
       run: mvn test
         
     - name: Cache SonarQube packages 
-      uses: actions/cache@vi
+      uses: actions/cache@v1
       with:
         path: ~/.sonar/cache 
         key: ${< runner.os }}-sonar 
