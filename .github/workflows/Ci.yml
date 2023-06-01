@@ -29,21 +29,21 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.sonar/cache 
-        key: ${< runner.os }}-sonar 
-        restore-keys: ${f runner.os }}-sonar
+        key: ${{ runner.os }}-sonar 
+        restore-keys: ${{ runner.os }}-sonar
     
-    - name: Build and Analyze 
+    - name: Cache maven 
       uses: actions/cache@v1 
       with:
         path: ~/.m2
-        key: $(f runner.os )}-m2-5(1 hashFiles ('**/pon.xml') ))
-        restore-keys: ${f runner.os })-m2
+        key: ${{ runner.os }}-m2-${{ hashFiles ('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
     
     - name: Build and analyze 
       env:
         #GITHUB_ TOKEN: ${ secrets. GITHUB_ TOKEN }} # Needed to get PR information, if any
-        SONAR_ TOKEN: S{{ da55ab07e2d7e934678f25612d35ee635c4c7397 })
-        SONAR_HOST_URL: Sf secrets. SONAR_http://54.152.141.83:8080 })
+        SONAR_ TOKEN: ${{ secrets. SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets. SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKeysgithub-action-pipeline-codequality
 
   
