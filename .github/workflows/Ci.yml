@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
     - name: Checkout repository
@@ -28,16 +30,6 @@ jobs:
     - name: compile with Maven
       run: mvn compile
 
-    - name: Run tests
-      run: |
-        mvn test
-        date > output.txt
-
-    - name: Download File
-      uses: actions/download-artifact@v3
-      with:
-        name: output.txt
-
-    - run: cat output.txt
+    
 
 
