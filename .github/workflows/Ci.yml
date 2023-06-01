@@ -38,7 +38,25 @@ jobs:
         java -version
         mvn -version
         
-
+    - name: Cache SonarQube packages 
+      uses: actions/cache@vi
+      with:
+        path: ~/.sonar/cache 
+        key: ${< runner.os }}-sonar restore-keys: ${f runner.os }}-sonar
+    
+    - name: Cache Maven packages 
+      uses: actions/cache@v1 
+      with:
+        path: ~/.m2
+        key: $(f runner.os )}-m2-5(1 hashFiles ('**/pon.xml') ))
+        restore-keys: ${f runner.os })-m2
+    
+    - name: Build and analyze 
+    env:
+      #GITHUB_ TOKEN: ${ secrets. GITHUB_ TOKEN }} # Needed to get PR information, if any
+      SONAR_ TOKEN: S{{ secrets.SONAR_TOKEN })
+      SONAR_HOST_URL: Sf secrets. SONAR_HOST_URL })
+      run: mvn -B verify org.sonarsource.scanner. maven: sonar-maven-plugin:sonar -Dsonar.projectKeysgithub-action-pipeline-codequality
 
   
     
