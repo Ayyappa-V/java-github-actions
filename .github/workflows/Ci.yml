@@ -31,5 +31,9 @@ jobs:
     - name: package
       run: mvn package
     
+    cache: 'maven'
+    - name: Build with Maven
+      run: mvn -B package --Demo.java pom.xml
+    
 
 
