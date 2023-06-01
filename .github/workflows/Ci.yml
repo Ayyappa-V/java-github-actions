@@ -11,7 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -21,9 +20,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-
-    - name: code build
-      run: mvn clean install
+    - run: mvn clean install
       
     - name: code test
       run: mvn test
