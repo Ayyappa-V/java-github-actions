@@ -27,7 +27,7 @@ jobs:
           mvn test
           
       - name: Sonar Cache
-        uses: actions/cache@v1.2.1
+        uses: actions/cache@v3
         with:
           # A directory to store and save the cache
           path: ~/.sonar/cache
@@ -37,7 +37,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
           
       - name: Maven Cache
-        uses: actions/cache@v1.2.1
+        uses: actions/cache@v3
         with:
           # A directory to store and save the cache
           path: ~/.m2
