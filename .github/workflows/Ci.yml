@@ -20,9 +20,8 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        
-    - name: code build
-    - run: mvn clean install
+    - run: |
+          mvn clean install
              
     - name: code test
     - run: mvn test
