@@ -20,17 +20,12 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - run: |
-          mvn clean install
-          
-          
-    - name: Set up Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-    - run: |
-          mvn test
+        
+    - name: code build   
+    - run: mvn clean install
+             
+    - name: code test
+    - run: mvn test
       
         
    
