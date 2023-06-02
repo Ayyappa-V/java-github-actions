@@ -21,6 +21,8 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - run: |
+          java -version
+          mvn -version
           mvn clean install
           mvn test
       
