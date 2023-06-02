@@ -45,14 +45,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashfiles('**/pom.xml') }}
            # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
           restore-keys: ${{ runner.os }}-m2
-      
-      
-#      - name: Cache SonarQube packages uses: actions/cache@v1 with:
-#path: ~/.sonal/cache key: ${f runner.os }}-sonar restore-keys: ${{ runner.os })-sonar
-#- name: Cache Maven packages uses: actions/cache@v1 with:
-#path: ~/.m2
-#key: $(f runner.os ))-m2-s(f hashFiles (***/pom.xml') ))
-#restore-keys: ${{ runner.os })-m2
           
      
         env:
