@@ -25,10 +25,14 @@ jobs:
           mvn -version
           mvn clean install
           mvn test
-      
-        
-   
-
-    
+          
+       
+          
+     
+        env:
+          GITHUB TOKEN: ${{ secrets. GITHUB_TOKEN }} # Needed to get PR information, if an
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:-Dsonar.projectKey=sathya-java
 
 
