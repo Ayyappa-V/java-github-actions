@@ -26,7 +26,33 @@ jobs:
           mvn clean install
           mvn test
           
-       
+      - name: Sonar Cache
+        uses: actions/cache@v1.2.1
+        with:
+          # A directory to store and save the cache
+          path: ~/.sonar/cache
+          # An explicit key for restoring and saving the cache
+          key: ${{ runner.os }}-sonar
+          # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
+          restore-keys: ${{ runner.os }}-sonar
+          
+      - name: Maven Cache
+        uses: actions/cache@v1.2.1
+        with:
+          # A directory to store and save the cache
+          path: ~/.m2
+          # An explicit key for restoring and saving the cache
+          key: ${{ runner.os }}-m2-${{ hashfiles('**/pom.xml') }}
+           # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
+          restore-keys: ${{ runner.os }}-m2
+      
+      
+#      - name: Cache SonarQube packages uses: actions/cache@v1 with:
+#path: ~/.sonal/cache key: ${f runner.os }}-sonar restore-keys: ${{ runner.os })-sonar
+#- name: Cache Maven packages uses: actions/cache@v1 with:
+#path: ~/.m2
+#key: $(f runner.os ))-m2-s(f hashFiles (***/pom.xml') ))
+#restore-keys: ${{ runner.os })-m2
           
      
         env:
